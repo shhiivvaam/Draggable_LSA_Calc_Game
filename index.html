@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Game: Lateral Surface Area</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lateral Surface Area</h1>
+        <div class="equation">
+            <p>2 × height × [ (length) + (width) ] = Lateral Surface Area</p>
+        </div>
+        <div class="problem-container">
+            <div class="problem">
+                <p>2 × <span class="drop-target" data-value="height"></span> × [ <span class="drop-target"
+                        data-value="length"></span> + <span class="drop-target" data-value="width"></span> ] = <span
+                        class="result">50 cm²</span></p>
+            </div>
+            <div class="problem">
+                <p>2 × <span class="drop-target" data-value="height"></span> × [ <span class="drop-target"
+                        data-value="length"></span> + <span class="drop-target" data-value="width"></span> ] = <span
+                        class="result">64 cm²</span></p>
+            </div>
+        </div>
+        <div class="values">
+            <div class="value-set">
+                <h3>Set 'Length'</h3>
+                <div class="value-container">
+                    <div class="value draggable" draggable="true" data-value="3">3 cm</div>
+                    <div class="value draggable" draggable="true" data-value="4">4 cm</div>
+                    <div class="value draggable" draggable="true" data-value="6">6 cm</div>
+                </div>
+            </div>
+            <div class="value-set">
+                <h3>Set 'Width'</h3>
+                <div class="value-container">
+                    <div class="value draggable" draggable="true" data-value="2">2 cm</div>
+                    <div class="value draggable" draggable="true" data-value="4">4 cm</div>
+                    <div class="value draggable" draggable="true" data-value="6">6 cm</div>
+                </div>
+            </div>
+            <div class="value-set">
+                <h3>Set 'Height'</h3>
+                <div class="value-container">
+                    <div class="value draggable" draggable="true" data-value="3">3 cm</div>
+                    <div class="value draggable" draggable="true" data-value="4">4 cm</div>
+                    <div class="value draggable" draggable="true" data-value="5">5 cm</div>
+                </div>
+            </div>
+        </div>
+        <div class="score-container">
+            <p>Score: <span id="score">0</span></p>
+        </div>
+        <div id="celebration" class="hidden"></div>
+    </div>
+    <audio id="background-music" loop>
+        <source src="./assets/audio/background.mp3" type="audio/mpeg">
+    </audio>
+    <script src="./js/game.js"></script>
+</body>
+
+</html>
