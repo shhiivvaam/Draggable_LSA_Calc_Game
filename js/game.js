@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let correctAudio = new Audio('../assets/audio/correct.wav');
     let incorrectAudio = new Audio('../assets/audio/incorrect.wav');
-
+    backgroundMusic.volume = 0.2;
     backgroundMusic.play();
     document.addEventListener('click', function () {
         backgroundMusic.play();
@@ -35,11 +35,30 @@ window.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
     }
 
+    // function drop(e) {
+    //     e.preventDefault();
+    //     const value = e.dataTransfer.getData('text/plain');
+    //     e.target.textContent = value;
+    //     checkAnswer();
+    // }
+
     function drop(e) {
         e.preventDefault();
         const value = e.dataTransfer.getData('text/plain');
         e.target.textContent = value;
         checkAnswer();
+
+        // Add visual feedback for incorrect answers
+        if (!isCorrectAnswer(value, e.target.dataset.value)) {
+            e.target.classList.add('incorrect');
+            setTimeout(() => {
+                e.target.classList.remove('incorrect');
+            }, 1000);
+        }
+    }
+
+    function isCorrectAnswer(value, expectedValue) {
+        return value === expectedValue;
     }
 
     function checkAnswer() {

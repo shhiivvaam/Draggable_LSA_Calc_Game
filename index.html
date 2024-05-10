@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Game: Lateral Surface Area</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -55,10 +58,14 @@
         <div class="score-container">
             <p>Score: <span id="score">0</span></p>
         </div>
-        <div id="celebration" class="hidden"></div>
-        <button id="reset-btn">Reset</button>
+        <!-- <div id="celebration" class="hidden"></div> -->
+
+        <div id="celebration" class="hidden" aria-live="polite" aria-atomic="true">
+            <img src="./assets/images/smiley.png" alt="Celebration image">
+        </div>
+        <button id="reset-btn">Reset Game</button>
     </div>
-    <audio id="background-music" loop>
+    <audio id="background-music" loop autoplay>
         <source src="./assets/audio/background.mp3" type="audio/mp3">
     </audio>
     <script src="./js/game.js"></script>
