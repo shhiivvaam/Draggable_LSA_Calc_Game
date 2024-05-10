@@ -4,12 +4,17 @@ window.addEventListener('DOMContentLoaded', () => {
     const scoreDisplay = document.getElementById('score');
     const celebrationContainer = document.getElementById('celebration');
     const backgroundMusic = document.getElementById('background-music');
+    const resetButton = document.getElementById('reset-btn');
 
     let score = 0;
     let correctAudio = new Audio('../assets/audio/correct.wav');
     let incorrectAudio = new Audio('../assets/audio/incorrect.wav');
 
     backgroundMusic.play();
+    document.addEventListener('click', function () {
+        backgroundMusic.play();
+        document.removeEventListener('click', arguments.callee);
+    });
 
     draggableValues.forEach(value => {
         value.addEventListener('dragstart', dragStart);
@@ -19,6 +24,8 @@ window.addEventListener('DOMContentLoaded', () => {
         target.addEventListener('dragover', dragOver);
         target.addEventListener('drop', drop);
     });
+
+    resetButton.addEventListener('click', resetGame);
 
     function dragStart(e) {
         e.dataTransfer.setData('text/plain', e.target.dataset.value);
@@ -56,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (problem1Correct && problem2Correct) {
+        if (problem1Correct === true && problem2Correct == true) {
             score += 2;
             scoreDisplay.textContent = score;
             correctAudio.play();
@@ -71,9 +78,21 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function showCelebration() {
+        celebrationContainer.classList.remove('hidden');
         celebrationContainer.innerHTML = '<img src="../assets/images/celebration.png" alt="Celebration">';
         setTimeout(() => {
+            celebrationContainer.classList.add('hidden');
             celebrationContainer.innerHTML = '';
         }, 2000);
+    }
+
+    function resetGame() {
+        dropTargets.forEach(target => {
+            target.textContent = '';
+        });
+        score = 0;
+        scoreDisplay.textContent = score;
+        celebrationContainer.classList.add('hidden');
+        celebrationContainer.innerHTML = '';
     }
 });
